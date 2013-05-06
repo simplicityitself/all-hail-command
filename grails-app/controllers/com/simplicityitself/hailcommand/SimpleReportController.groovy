@@ -9,6 +9,9 @@ class SimpleReportController {
   }
 
   def json(SimpleCountryReportCommand reportCommand) {
+    if (!reportCommand.validate()) {
+      render [message: "Failed validation"] as JSON
+    }
     render reportCommand() as JSON
   }
 
